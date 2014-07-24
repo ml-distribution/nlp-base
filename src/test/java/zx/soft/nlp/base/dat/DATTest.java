@@ -2,26 +2,23 @@ package zx.soft.nlp.base.dat;
 
 import org.junit.Test;
 
-import zx.soft.nlp.base.dat.DATMaker;
-import zx.soft.nlp.base.dat.DoubleArrayTire;
-
 public class DATTest {
 
 	@Test
 	public void makerTest() throws Exception {
 		DATMaker dat = new DATMaker();
 
-		dat.maker("/home/ansj/公共的/pinyin.dic");
+		dat.maker("pinyin.dic");
 
-		dat.saveText("/home/ansj/公共的/pinyin.dat");
+		dat.saveText("pinyin.dat");
 
-		dat.save("/home/ansj/公共的/pinyin.obj");
+		dat.save("pinyin.obj");
 	}
 
 	@Test
 	public void loadTest() throws Exception {
 		long start = System.currentTimeMillis();
-		DoubleArrayTire load = DoubleArrayTire.load("/home/ansj/公共的/pinyin.obj");
+		DoubleArrayTire load = DoubleArrayTire.load("pinyin.obj");
 		System.out.println(load.getItem("龙麝"));
 		System.out.println("load obj use time " + (System.currentTimeMillis() - start));
 	}
@@ -29,7 +26,7 @@ public class DATTest {
 	@Test
 	public void loadTextTest() throws Exception {
 		long start = System.currentTimeMillis();
-		DoubleArrayTire load = DoubleArrayTire.loadText("/home/ansj/公共的/pinyin.dat");
+		DoubleArrayTire load = DoubleArrayTire.loadText("pinyin.dat");
 		System.out.println(load.getItem("龙麝"));
 		System.out.println("load obj use time " + (System.currentTimeMillis() - start));
 	}

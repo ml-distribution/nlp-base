@@ -2,11 +2,7 @@ package zx.soft.nlp.base.dat;
 
 import org.junit.Test;
 
-import zx.soft.nlp.base.dat.BasicItem;
-import zx.soft.nlp.base.dat.DATMaker;
-import zx.soft.nlp.base.dat.DoubleArrayTire;
-import zx.soft.nlp.base.dat.Item;
-
+@SuppressWarnings("unused")
 public class DATMakerTest {
 
 	@Test
@@ -21,25 +17,24 @@ public class DATMakerTest {
 		//生成的双数组
 		//item 每个元素会包含check 和 base 的值
 		Item[] dat = datM.getDAT();
-		
+
 		//以二进制方式保存
 		datM.save("保存路径");
-		
+
 		//以文本可读方式保存
 		datM.saveText("保存路径");
-		
+
 	}
-	
-	
+
 	@Test
 	public void loadTest() throws Exception {
-		DoubleArrayTire load = DoubleArrayTire.load("生成模型的路径"); 
+		DoubleArrayTire load = DoubleArrayTire.load("生成模型的路径");
 		Item item = load.getItem("中国"); //相当于每一个词语都在数组中又个id。可以通过这个id快速的获取词典
 		Item item2 = load.getItem(5); //相当于每一个词语都在数组中又个id。可以通过这个id快速的获取词典
-		
-//		item2.base
-//		item2.check
-//		item2.status
+
+		//		item2.base
+		//		item2.check
+		//		item2.status
 	}
 
 }

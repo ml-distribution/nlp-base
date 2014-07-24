@@ -6,13 +6,10 @@ import zx.soft.nlp.base.tire.SmartGetWord;
 import zx.soft.nlp.base.tire.domain.SmartForest;
 import zx.soft.nlp.base.util.StringUtil;
 
-/**
- * Created by ansj on 3/30/14.
- */
 public class SmartGetWordTest {
 
 	@Test
-	public void test(){
+	public void test() {
 		/**
 		 * 词典的构造.一行一个词后面是参数.可以从文件读取.可以是read流.
 		 */

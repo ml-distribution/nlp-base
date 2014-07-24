@@ -1,17 +1,15 @@
 package zx.soft.nlp.base.splitWord;
 
+import java.io.BufferedReader;
+import java.io.StringReader;
+
 import zx.soft.nlp.base.tire.GetWord;
 import zx.soft.nlp.base.tire.domain.Forest;
 import zx.soft.nlp.base.tire.library.Library;
 import zx.soft.nlp.base.util.StringUtil;
 
-import java.io.BufferedReader;
-import java.io.StringReader;
-
-/**
- * Created by ansj on 3/30/14.
- */
 public class GetWordTest {
+
 	public static void main(String[] args) throws Exception {
 		/**
 		 * 词典的构造.一行一个词后面是参数.可以从文件读取.可以是read流.
@@ -40,4 +38,5 @@ public class GetWordTest {
 		}
 		System.out.println(System.currentTimeMillis() - start);
 	}
+
 }
