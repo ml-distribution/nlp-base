@@ -1,6 +1,7 @@
 package zx.soft.nlp.base.util;
 
 public class ReflectUtil {
+
 	/**
 	 * 将一个对象转换为对应的类
 	 *
@@ -24,4 +25,5 @@ public class ReflectUtil {
 			return value;
 		}
 	}
+
 }

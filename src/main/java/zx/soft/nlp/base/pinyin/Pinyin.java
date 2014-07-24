@@ -113,4 +113,5 @@ public class Pinyin {
 	public static void insertPinyin(String word, String[] pinyins) {
 		PINYIN_FOREST.add(word, pinyins);
 	}
+
 }

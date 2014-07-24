@@ -1,16 +1,21 @@
 package zx.soft.nlp.base.bloomfilter;
 
-import zx.soft.nlp.base.bloomfilter.filter.*;
+import zx.soft.nlp.base.bloomfilter.filter.JSFilter;
+import zx.soft.nlp.base.bloomfilter.filter.JavaFilter;
+import zx.soft.nlp.base.bloomfilter.filter.PHPFilter;
+import zx.soft.nlp.base.bloomfilter.filter.PJWFilter;
+import zx.soft.nlp.base.bloomfilter.filter.SDBMFilter;
 import zx.soft.nlp.base.bloomfilter.iface.Filter;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-
 /**
- * BlommFilter 实现 1.构建hash算法 2.散列hash映射到数组的bit位置 3.验证
+ * BlommFilter 
  * 
- * @author Ansj
+ * 实现: 1.构建hash算法 
+ *       2.散列hash映射到数组的bit位置
+ *       3.验证
+ * 
+ * @author wanggang
+ *
  */
 public class BloomFilter {
 
@@ -44,11 +49,11 @@ public class BloomFilter {
 	}
 
 	public boolean containsAndAdd(String str) {
-		boolean flag = this.contains(str) ;
-		if(!flag){
+		boolean flag = this.contains(str);
+		if (!flag) {
 			this.add(str);
 		}
-		return flag ;
+		return flag;
 	}
 
 }

@@ -1,15 +1,15 @@
 package zx.soft.nlp.base.tire.library;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.List;
+
 import zx.soft.nlp.base.tire.domain.Branch;
 import zx.soft.nlp.base.tire.domain.Forest;
 import zx.soft.nlp.base.tire.domain.Value;
 import zx.soft.nlp.base.tire.domain.WoodInterface;
 import zx.soft.nlp.base.util.IOUtil;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.List;
 
 public class Library {
 
@@ -24,7 +24,6 @@ public class Library {
 	public static Forest makeForest(BufferedReader br) throws Exception {
 		return makeLibrary(br, new Forest());
 	}
-
 
 	/**
 	 * 传入value数组.构造树
@@ -50,7 +49,8 @@ public class Library {
 	 * @throws Exception
 	 */
 	private static Forest makeLibrary(BufferedReader br, Forest forest) throws Exception {
-		if (br == null) return forest;
+		if (br == null)
+			return forest;
 		try {
 			String temp = null;
 			while ((temp = br.readLine()) != null) {
@@ -119,4 +119,5 @@ public class Library {
 			branch = branch.get(chars[i]);
 		}
 	}
+
 }

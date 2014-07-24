@@ -15,7 +15,7 @@ import zx.soft.nlp.base.util.StringUtil;
 
 public class MemoryIndex<T> {
 
-	private Map<String, TreeSet<Entry>> index = new HashMap<String, TreeSet<Entry>>();
+	private final Map<String, TreeSet<Entry>> index = new HashMap<>();
 
 	private int size = 10;
 
@@ -138,14 +138,14 @@ public class MemoryIndex<T> {
 		}
 		double weight = 0;
 		if (value instanceof String) {
-			weight = Math.log(Math.E / (double) value.toString().length());
+			weight = Math.log(Math.E / value.toString().length());
 		}
 		return weight;
 	}
 
 	public class Entry implements Comparable<Entry> {
-		private double score;
-		private T t;
+		private final double score;
+		private final T t;
 
 		public Entry(T t, Double score) {
 			this.t = t;

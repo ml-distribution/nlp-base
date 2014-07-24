@@ -1,12 +1,10 @@
 package zx.soft.nlp.base.bloomfilter.bitmap;
 
-
 import zx.soft.nlp.base.bloomfilter.iface.BitMap;
 
 public class LongMap implements BitMap {
 
 	private static final long MAX = Long.MAX_VALUE;
-
 
 	public LongMap() {
 		longs = new long[93750000];
@@ -18,12 +16,14 @@ public class LongMap implements BitMap {
 
 	private long[] longs = null;
 
+	@Override
 	public void add(long i) {
 		int r = (int) (i / 64);
 		int c = (int) (i % 64);
 		longs[r] = (int) (longs[r] | (1 << c));
 	}
 
+	@Override
 	public boolean contains(long i) {
 		int r = (int) (i / 64);
 		int c = (int) (i % 64);
@@ -33,6 +33,7 @@ public class LongMap implements BitMap {
 		return false;
 	}
 
+	@Override
 	public void remove(long i) {
 		int r = (int) (i / 32);
 		int c = (int) (i % 32);

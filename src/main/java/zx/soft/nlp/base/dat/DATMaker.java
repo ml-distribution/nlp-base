@@ -22,8 +22,8 @@ import zx.soft.nlp.base.util.StringUtil;
 /**
  * dat maker
  * 
- * @author ansj
- * 
+ * @author wanggang
+ *
  */
 public class DATMaker {
 
@@ -32,7 +32,7 @@ public class DATMaker {
 	private SmartForest<Item> forest = null;
 
 	// 动态数组扩容
-	private int capacity = 100000;
+	private final int capacity = 100000;
 
 	private Item[] dat = new Item[100000];
 
@@ -98,7 +98,8 @@ public class DATMaker {
 		start = System.currentTimeMillis();
 		LOG.info("make dat tire begin !");
 		makeDAT(tree2List());
-		LOG.info("make dat tire over use time " + (System.currentTimeMillis() - start) + " ms! dat len is " + datArrLen() + "! dat size is " + datItemSize());
+		LOG.info("make dat tire over use time " + (System.currentTimeMillis() - start) + " ms! dat len is "
+				+ datArrLen() + "! dat size is " + datItemSize());
 
 	}
 
@@ -258,7 +259,8 @@ public class DATMaker {
 	 * @throws IllegalAccessException 
 	 * @throws InstantiationException 
 	 */
-	private void treeToLibrary(List<Item> all, SmartForest<Item> sf, String preStr) throws InstantiationException, IllegalAccessException {
+	private void treeToLibrary(List<Item> all, SmartForest<Item> sf, String preStr) throws InstantiationException,
+			IllegalAccessException {
 		SmartForest<Item>[] branches = sf.branches;
 
 		if (branches == null) {

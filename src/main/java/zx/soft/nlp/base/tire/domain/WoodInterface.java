@@ -1,6 +1,7 @@
 package zx.soft.nlp.base.tire.domain;
 
 public abstract interface WoodInterface {
+
 	public abstract WoodInterface add(WoodInterface paramWoodInterface);
 
 	public abstract WoodInterface get(char paramChar);
@@ -20,4 +21,5 @@ public abstract interface WoodInterface {
 	public abstract String[] getParams();
 
 	public abstract void setParam(String[] paramArrayOfString);
+
 }

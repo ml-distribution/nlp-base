@@ -9,16 +9,17 @@ import java.util.Map.Entry;
  * 用map做的计数器.
  *
  * @param <T>
- * @author ansj
+ * @author wanggang
  */
 public class MapCount<T> implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	private HashMap<T, Double> hm = null;
 
 	public MapCount() {
 		hm = new HashMap<T, Double>();
 	}
-	
+
 	public MapCount(HashMap<T, Double> hm) {
 		this.hm = hm;
 	}
@@ -100,4 +101,5 @@ public class MapCount<T> implements Serializable {
 		}
 		return sb.toString();
 	}
+
 }

@@ -1,18 +1,21 @@
 package zx.soft.nlp.base.tire.domain;
 
-import zx.soft.nlp.base.tire.SmartGetWord;
-
 import java.util.Arrays;
 
+import zx.soft.nlp.base.tire.SmartGetWord;
 
 /**
- * 一个小树,和Forest的区别是.这个在首字也是用二分查找,做过一次优化.达到到达一定量级自动扩展为hash定位 在ansj分词中这个应用是在自适应分词
+ * 一个小树,和Forest的区别是.这个在首字也是用二分查找,做过一次优化.
+ * 达到到达一定量级自动扩展为hash定位.
+ * 
+ * @author wanggang
  *
- * @author ansj
+ * @param <T>
  */
 public class SmartForest<T> implements Comparable<SmartForest<T>> {
 
 	private static final int MAX_SIZE = 65536;
+
 	/**
 	 * status 此字的状态1，继续 2，是个词语但是还可以继续 ,3确定 nature 词语性质
 	 */
@@ -66,19 +69,19 @@ public class SmartForest<T> implements Comparable<SmartForest<T>> {
 			}
 			this.branch = this.branches[bs];
 			switch (branch.getStatus()) {
-				case -1:
-					this.branch.setStatus(1);
-					break;
-				case 1:
-					if (this.branch.getStatus() == 3) {
-						this.branch.setStatus(2);
-					}
-					break;
-				case 3:
-					if (this.branch.getStatus() != 3) {
-						this.branch.setStatus(2);
-					}
-					this.branch.setParam(branch.getParam());
+			case -1:
+				this.branch.setStatus(1);
+				break;
+			case 1:
+				if (this.branch.getStatus() == 3) {
+					this.branch.setStatus(2);
+				}
+				break;
+			case 3:
+				if (this.branch.getStatus() != 3) {
+					this.branch.setStatus(2);
+				}
+				this.branch.setParam(branch.getParam());
 			}
 			return this.branch;
 		}
@@ -192,6 +195,7 @@ public class SmartForest<T> implements Comparable<SmartForest<T>> {
 		}
 	}
 
+	@Override
 	public int compareTo(SmartForest<T> o) {
 		// TODO Auto-generated method stub
 		if (this.c > o.c)
@@ -247,4 +251,5 @@ public class SmartForest<T> implements Comparable<SmartForest<T>> {
 	public SmartGetWord<T> getWord(char[] chars) {
 		return new SmartGetWord<T>(this, chars);
 	}
+
 }

@@ -1,9 +1,12 @@
 package zx.soft.nlp.base.occurrence;
 
 /**
- * Created by ansj on 4/1/14.
+ * 
+ * @author wanggang
+ *
  */
 public class Element {
+
 	private static final String DEFAULT_NATURE = "";
 
 	private String name;
@@ -15,7 +18,6 @@ public class Element {
 		}
 		this.name = name;
 	}
-
 
 	public Element(String name) {
 		this.name = name;
@@ -37,7 +39,6 @@ public class Element {
 		this.name = name;
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Element) {
@@ -51,4 +52,5 @@ public class Element {
 	public int hashCode() {
 		return this.name.hashCode();
 	}
+
 }

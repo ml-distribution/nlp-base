@@ -7,7 +7,9 @@ import zx.soft.nlp.base.util.StringUtil;
 
 /**
  * 简体繁体相互转换
- * Created by ansj on 4/1/14.
+ * 
+ * @author wanggang
+ *
  */
 public class JianFan {
 
@@ -21,7 +23,7 @@ public class JianFan {
 	 * @return
 	 */
 	public static String j2F(String str) {
-		return toCover(J2F_FOREST , str);
+		return toCover(J2F_FOREST, str);
 	}
 
 	/**
@@ -30,10 +32,10 @@ public class JianFan {
 	 * @return
 	 */
 	public static String f2J(String str) {
-		return toCover(F2J_FOREST , str);
+		return toCover(F2J_FOREST, str);
 	}
 
-	private static String toCover(Forest forest ,String str) {
+	private static String toCover(Forest forest, String str) {
 		if (StringUtil.isBlank(str)) {
 			return str;
 		}
@@ -55,7 +57,6 @@ public class JianFan {
 		}
 		return sb.toString();
 	}
-
 
 	public static void main(String[] args) {
 		System.out.println(JianFan.f2J("士多啤梨士多啤梨輸入簡體字,點下面繁體字按鈕進行在線轉換123"));

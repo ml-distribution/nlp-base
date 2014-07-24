@@ -6,46 +6,57 @@ public class WordAlert {
 	 * 这个就是(int)'ａ'
 	 */
 	public static final int MIN_LOWER = 65345;
+
 	/**
 	 * 这个就是(int)'ｚ'
 	 */
 	public static final int MAX_LOWER = 65370;
+
 	/**
 	 * 差距进行转译需要的
 	 */
 	public static final int LOWER_GAP = 65248;
+
 	/**
 	 * 这个就是(int)'Ａ'
 	 */
 	public static final int MIN_UPPER = 65313;
+
 	/**
 	 * 这个就是(int)'Ｚ'
 	 */
 	public static final int MAX_UPPER = 65338;
+
 	/**
 	 * 差距进行转译需要的
 	 */
 	public static final int UPPER_GAP = 65216;
+
 	/**
 	 * 这个就是(int)'A'
 	 */
 	public static final int MIN_UPPER_E = 65;
+
 	/**
 	 * 这个就是(int)'Z'
 	 */
 	public static final int MAX_UPPER_E = 90;
+
 	/**
 	 * 差距进行转译需要的
 	 */
 	public static final int UPPER_GAP_E = -32;
+
 	/**
 	 * 这个就是(int)'０'
 	 */
 	public static final int MIN_UPPER_N = 65296;
+
 	/**
 	 * 这个就是(int)'９'
 	 */
 	public static final int MAX_UPPER_N = 65305;
+
 	/**
 	 * 差距进行转译需要的
 	 */
@@ -284,7 +295,8 @@ public class WordAlert {
 		char c;
 		for (int i = 0; i < length; i++) {
 			c = word.charAt(i);
-			if ((c >= 'a' && c <= 'z') || (c >= MIN_LOWER && c <= MAX_LOWER) || (c >= MIN_UPPER && c <= MAX_UPPER) || (c >= MIN_UPPER_E && c <= MAX_UPPER_E) ) {
+			if ((c >= 'a' && c <= 'z') || (c >= MIN_LOWER && c <= MAX_LOWER) || (c >= MIN_UPPER && c <= MAX_UPPER)
+					|| (c >= MIN_UPPER_E && c <= MAX_UPPER_E)) {
 			} else {
 				return false;
 			}

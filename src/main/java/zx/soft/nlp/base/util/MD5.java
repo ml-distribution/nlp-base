@@ -4,16 +4,17 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MD5 {
+
 	/**
 	 * MD5加密类
 	 * @param str 要加密的字符串
 	 * @return    加密后的字符串
 	 */
-	public static String code(String str){
+	public static String code(String str) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			md.update(str.getBytes());
-			byte[]byteDigest = md.digest();
+			byte[] byteDigest = md.digest();
 			int i;
 			StringBuffer buf = new StringBuffer("");
 			for (int offset = 0; offset < byteDigest.length; offset++) {
@@ -32,6 +33,6 @@ public class MD5 {
 			e.printStackTrace();
 			return null;
 		}
-		
 	}
+
 }

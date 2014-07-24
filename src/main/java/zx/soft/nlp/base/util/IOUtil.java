@@ -1,15 +1,33 @@
 package zx.soft.nlp.base.util;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.RandomAccessFile;
+import java.io.Reader;
+import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 /**
  * java 一个简单的io操作
  * 
- * @author ansj
+ * @author wanggang
  */
 public class IOUtil {
+
 	public static final String UTF8 = "utf-8";
 	public static final String GBK = "gbk";
 	public static final String TABLE = "\t";
@@ -26,12 +44,13 @@ public class IOUtil {
 		return null;
 	}
 
-	public static BufferedReader getReader(String path, String charEncoding) throws FileNotFoundException, UnsupportedEncodingException {
+	public static BufferedReader getReader(String path, String charEncoding) throws FileNotFoundException,
+			UnsupportedEncodingException {
 		return getReader(new File(path), charEncoding);
 	}
 
-	private static BufferedReader getReader(File file, String charEncoding) throws FileNotFoundException, UnsupportedEncodingException {
-		// TODO Auto-generated method stub
+	private static BufferedReader getReader(File file, String charEncoding) throws FileNotFoundException,
+			UnsupportedEncodingException {
 		InputStream is = new FileInputStream(file);
 		return new BufferedReader(new InputStreamReader(is, charEncoding));
 	}
@@ -59,7 +78,8 @@ public class IOUtil {
 		}
 	}
 
-	public static BufferedReader getReader(InputStream inputStream, String charEncoding) throws UnsupportedEncodingException {
+	public static BufferedReader getReader(InputStream inputStream, String charEncoding)
+			throws UnsupportedEncodingException {
 		return new BufferedReader(new InputStreamReader(inputStream, charEncoding));
 	}
 
@@ -73,14 +93,12 @@ public class IOUtil {
 			reader = IOUtil.getReader(is, charEncoding);
 			return getContent(reader);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			if (reader != null) {
 				try {
 					reader.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -94,13 +112,11 @@ public class IOUtil {
 			is = new FileInputStream(file);
 			return getContent(is, charEncoding);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
 				is.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -126,7 +142,6 @@ public class IOUtil {
 	 * @throws java.io.FileNotFoundException
 	 */
 	public static void WriterObj(String path, Serializable hm) throws FileNotFoundException, IOException {
-		// TODO Auto-generated method stub
 		ObjectOutputStream objectOutputStream = null;
 		try {
 			objectOutputStream = new ObjectOutputStream(new FileOutputStream(path));
@@ -148,7 +163,6 @@ public class IOUtil {
 			if (reader != null)
 				reader.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -163,7 +177,6 @@ public class IOUtil {
 			if (is != null)
 				is.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -180,7 +193,6 @@ public class IOUtil {
 				os.close();
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -189,7 +201,6 @@ public class IOUtil {
 		try {
 			return instanceFileIterator(IOUtil.getInputStream(path), charEncoding);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -199,10 +210,8 @@ public class IOUtil {
 		try {
 			return new FileIterator(is, charEncoding);
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -219,7 +228,8 @@ public class IOUtil {
 	 * @throws java.io.UnsupportedEncodingException
 	 */
 	@SuppressWarnings({ "unchecked" })
-	public static <K, V> HashMap<K, V> loadMap(String path, String charEncoding, Class<K> key, Class<V> value) throws UnsupportedEncodingException {
+	public static <K, V> HashMap<K, V> loadMap(String path, String charEncoding, Class<K> key, Class<V> value)
+			throws UnsupportedEncodingException {
 
 		FileIterator iteartor = null;
 		HashMap<K, V> hm = null;
@@ -257,11 +267,13 @@ public class IOUtil {
 		}
 	}
 
-	public static List<String> readFile2List(String path, String charEncoding) throws UnsupportedEncodingException, FileNotFoundException {
+	public static List<String> readFile2List(String path, String charEncoding) throws UnsupportedEncodingException,
+			FileNotFoundException {
 		return readFile2List(getReader(path, charEncoding));
 	}
 
-	public static List<String> readFile2List(File file, String charEncoding) throws FileNotFoundException, UnsupportedEncodingException {
+	public static List<String> readFile2List(File file, String charEncoding) throws FileNotFoundException,
+			UnsupportedEncodingException {
 		return readFile2List(getReader(file, charEncoding));
 	}
 
@@ -280,13 +292,11 @@ public class IOUtil {
 				all.add(temp);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
 				br.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -294,7 +304,8 @@ public class IOUtil {
 	}
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		HashMap<String, Integer> loadMap = loadMap("/Users/ansj/git/ansj_seg/library/userLibrary/userLibrary.dic", "utf-8", null, null);
+		HashMap<String, Integer> loadMap = loadMap("userLibrary.dic", "utf-8", null, null);
 		System.out.println(loadMap.get("淘宝"));
 	}
+
 }

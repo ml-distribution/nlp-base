@@ -3,6 +3,7 @@ package zx.soft.nlp.base.tire.domain;
 import java.util.Arrays;
 
 public class Value {
+
 	private static final String TAB = "\t";
 	private String keyword;
 	private String[] paramers = new String[0];

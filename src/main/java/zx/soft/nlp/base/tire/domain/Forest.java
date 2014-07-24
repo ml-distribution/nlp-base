@@ -1,38 +1,40 @@
 package zx.soft.nlp.base.tire.domain;
 
-
 import zx.soft.nlp.base.tire.GetWord;
 
 public class Forest implements WoodInterface {
+
 	private WoodInterface[] chars = new WoodInterface[65536];
 
-
+	@Override
 	public WoodInterface add(WoodInterface branch) {
 		WoodInterface temp = this.chars[branch.getC()];
 		if (temp == null)
 			this.chars[branch.getC()] = branch;
 		else {
 			switch (branch.getStatus()) {
-				case 1:
-					if (temp.getStatus() == 3) {
-						temp.setStatus(2);
-					}
-					break;
-				case 3:
-					if (temp.getStatus() == 1) {
-						temp.setStatus(2);
-					}
-					temp.setParam(branch.getParams());
+			case 1:
+				if (temp.getStatus() == 3) {
+					temp.setStatus(2);
+				}
+				break;
+			case 3:
+				if (temp.getStatus() == 1) {
+					temp.setStatus(2);
+				}
+				temp.setParam(branch.getParams());
 			}
 		}
 
 		return this.chars[branch.getC()];
 	}
 
+	@Override
 	public boolean contains(char c) {
 		return this.chars[c] != null;
 	}
 
+	@Override
 	public WoodInterface get(char c) {
 		if (c > 66535) {
 			System.out.println(c);
@@ -41,15 +43,17 @@ public class Forest implements WoodInterface {
 		return this.chars[c];
 	}
 
-
+	@Override
 	public int compareTo(char c) {
 		return 0;
 	}
 
+	@Override
 	public boolean equals(char c) {
 		return false;
 	}
 
+	@Override
 	public char getC() {
 		return '\000';
 	}
@@ -61,10 +65,12 @@ public class Forest implements WoodInterface {
 	public void setNature(int nature) {
 	}
 
+	@Override
 	public byte getStatus() {
 		return 0;
 	}
 
+	@Override
 	public void setStatus(int status) {
 	}
 
@@ -72,10 +78,12 @@ public class Forest implements WoodInterface {
 		return this.chars.length;
 	}
 
+	@Override
 	public String[] getParams() {
 		return null;
 	}
 
+	@Override
 	public void setParam(String[] param) {
 	}
 
@@ -105,4 +113,5 @@ public class Forest implements WoodInterface {
 	public void clear() {
 		chars = new WoodInterface[65535];
 	}
+
 }

@@ -1,16 +1,16 @@
 package zx.soft.nlp.base.tire.domain;
 
-
 import zx.soft.nlp.base.util.AnsjArrays;
 
 public class Branch implements WoodInterface {
+
 	/**
 	 * status 此字的状态1，继续 2，是个词语但是还可以继续 ,3确定 nature 词语性质
 	 */
 	WoodInterface[] branches = null;
 	// 单独查找出来的对象
 	WoodInterface branch = null;
-	private char c;
+	private final char c;
 	// 状态
 	private byte status = 1;
 	// 词典后的参数
@@ -22,6 +22,7 @@ public class Branch implements WoodInterface {
 		this.param = param;
 	}
 
+	@Override
 	public WoodInterface add(WoodInterface branch) {
 		if (branches == null) {
 			branches = new WoodInterface[0];
@@ -30,19 +31,19 @@ public class Branch implements WoodInterface {
 		if (bs >= 0) {
 			this.branch = this.branches[bs];
 			switch (branch.getStatus()) {
-				case -1:
-					this.branch.setStatus(1);
-					break;
-				case 1:
-					if (this.branch.getStatus() == 3) {
-						this.branch.setStatus(2);
-					}
-					break;
-				case 3:
-					if (this.branch.getStatus() != 3) {
-						this.branch.setStatus(2);
-					}
-					this.branch.setParam(branch.getParams());
+			case -1:
+				this.branch.setStatus(1);
+				break;
+			case 1:
+				if (this.branch.getStatus() == 3) {
+					this.branch.setStatus(2);
+				}
+				break;
+			case 3:
+				if (this.branch.getStatus() != 3) {
+					this.branch.setStatus(2);
+				}
+				this.branch.setParam(branch.getParams());
 			}
 			return this.branch;
 		} else {
@@ -56,6 +57,7 @@ public class Branch implements WoodInterface {
 		}
 	}
 
+	@Override
 	public WoodInterface get(char c) {
 		if (this.branches == null) {
 			return null;
@@ -67,6 +69,7 @@ public class Branch implements WoodInterface {
 		return this.branches[i];
 	}
 
+	@Override
 	public boolean contains(char c) {
 		if (this.branches == null) {
 			return false;
@@ -74,6 +77,7 @@ public class Branch implements WoodInterface {
 		return AnsjArrays.binarySearch(this.branches, c) > -1;
 	}
 
+	@Override
 	public int compareTo(char c) {
 		if (this.c > c)
 			return 1;
@@ -83,6 +87,7 @@ public class Branch implements WoodInterface {
 		return 0;
 	}
 
+	@Override
 	public boolean equals(char c) {
 		return this.c == c;
 	}
@@ -92,18 +97,22 @@ public class Branch implements WoodInterface {
 		return this.c;
 	}
 
+	@Override
 	public byte getStatus() {
 		return this.status;
 	}
 
+	@Override
 	public void setStatus(int status) {
 		this.status = (byte) status;
 	}
 
+	@Override
 	public char getC() {
 		return this.c;
 	}
 
+	@Override
 	public String[] getParams() {
 		return this.param;
 	}
@@ -121,7 +130,9 @@ public class Branch implements WoodInterface {
 		return null;
 	}
 
+	@Override
 	public void setParam(String[] param) {
 		this.param = param;
 	}
+
 }

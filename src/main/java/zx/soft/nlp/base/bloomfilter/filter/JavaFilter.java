@@ -1,10 +1,8 @@
 package zx.soft.nlp.base.bloomfilter.filter;
 
-
 import zx.soft.nlp.base.bloomfilter.iface.Filter;
 
 public class JavaFilter extends Filter {
-
 
 	public JavaFilter(long maxValue, MACHINENUM X) throws Exception {
 		super(maxValue, X);

@@ -7,16 +7,18 @@ import java.util.List;
 /**
  * 从系统各个环境中找文件
  * 
- * @author ansj
- * 
+ * @author wanggang
+ *
  */
 public class FileFinder {
+
 	/**
 	 * 系统路径分隔符
 	 */
 	private static final String SEPARATOR = System.getProperty("path.separator");
-	private static final String[] PATHS_PROPERTIES = new String[] { "java.class.path", "java.library.path", "sun.boot.library.path", "user.dir", "java.endorsed.dirs", "java.io.tmpdir",
-			"user.home", "java.home", "java.ext.dirs" };
+	private static final String[] PATHS_PROPERTIES = new String[] { "java.class.path", "java.library.path",
+			"sun.boot.library.path", "user.dir", "java.endorsed.dirs", "java.io.tmpdir", "user.home", "java.home",
+			"java.ext.dirs" };
 
 	private static final String[] DEEP_PATHS_PROPERTIES = new String[] { "java.class.path", "user.dir" };
 
@@ -98,8 +100,8 @@ public class FileFinder {
 			File[] listFiles = file.listFiles();
 			for (File file2 : listFiles) {
 				File temp = findByFile(file2, lastPath);
-				if(temp!=null){
-					return temp ;
+				if (temp != null) {
+					return temp;
 				}
 			}
 		}
@@ -107,14 +109,15 @@ public class FileFinder {
 	}
 
 	public static void addDeepPath(String path) {
-		DEEP_PATHS.add(0,path);
+		DEEP_PATHS.add(0, path);
 	}
-	
+
 	public static void addPath(String path) {
-		PATHS.add(0,path);
+		PATHS.add(0, path);
 	}
-	
+
 	public static void main(String[] args) {
-		System.out.println(FileFinder.find("library"));;
+		System.out.println(FileFinder.find("library"));
 	}
+
 }

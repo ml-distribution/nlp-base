@@ -1,31 +1,31 @@
 package zx.soft.nlp.base.standardization;
 
-import zx.soft.nlp.base.util.WordAlert;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import zx.soft.nlp.base.util.WordAlert;
+
 /**
  * 句子标准化
- * 英文。数字全角转半角。。
+ * 英文/数字全角转半角。。
  * 所有数字，EN合并
+ * 
+ * @author wanggang
  *
- * @author ansj
  */
-
 public class WordUtil {
 
 	/**
 	 * 用这个值替换所有数字，如果为null就不替换
 	 */
-	private Character num2Value;
+	private final Character num2Value;
 
 	/*
 	 * 用这个值替换所有英文，如果为null就不替换
 	 */
-	private Character en2Value;
+	private final Character en2Value;
 
 	/**
 	 * 如果不想被替换清保留null
@@ -52,8 +52,7 @@ public class WordUtil {
 		int maxLen = chars.length - 1;
 		List<Element> list = new ArrayList<Element>();
 		Element element = null;
-		out:
-		for (int i = 0; i < chars.length; i++) {
+		out: for (int i = 0; i < chars.length; i++) {
 			if (num2Value != null && chars[i] >= '0' && chars[i] <= '9') {
 				element = new Element(num2Value);
 				list.add(element);
@@ -90,7 +89,6 @@ public class WordUtil {
 		}
 		return list;
 	}
-
 
 	/**
 	 * @param str

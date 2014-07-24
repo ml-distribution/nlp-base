@@ -1,9 +1,9 @@
 package zx.soft.nlp.base.bloomfilter.filter;
 
-
 import zx.soft.nlp.base.bloomfilter.iface.Filter;
 
 public class SDBMFilter extends Filter {
+
 	public SDBMFilter(long maxValue) throws Exception {
 		super(maxValue);
 	}

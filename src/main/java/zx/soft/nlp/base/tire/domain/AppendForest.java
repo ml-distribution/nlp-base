@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 一个小树,和Forest的区别是.这个在首字也是用二分查找,意味着,更节省内存.但是在构造和查找的时候都慢一点,一般应用在.词少.或者临时词典中.
- * 在ansj分词中这个应用是在自适应分词
+ * 一个小树,和Forest的区别是.这个在首字也是用二分查找,意味着,更节省内存.
+ * 但是在构造和查找的时候都慢一点,一般应用在.词少.或者临时词典中.
  * 一个参数可以递增的树
  *
- * @author ansj
+ * @author wanggang
  */
 public class AppendForest<T> implements Comparable<AppendForest<T>>, WoodInterface {
 
@@ -27,6 +27,7 @@ public class AppendForest<T> implements Comparable<AppendForest<T>>, WoodInterfa
 
 	// root
 	public AppendForest() {
+		//
 	}
 
 	// temp branch
@@ -76,23 +77,23 @@ public class AppendForest<T> implements Comparable<AppendForest<T>>, WoodInterfa
 		if (bs > -1) {
 			this.branch = this.branches[bs];
 			switch (branch.getStatus()) {
-				case -1:
-					this.branch.setStatus(1);
-					break;
-				case 1:
-					if (this.branch.getStatus() == 3) {
-						this.branch.setStatus(2);
-					}
-					break;
-				case 3:
-					if (this.branch.getStatus() != 3) {
-						this.branch.setStatus(2);
-					}
-					if (append) {
-						this.branch.param.addAll(branch.getParam());
-					} else {
-						this.branch.param = branch.getParam();
-					}
+			case -1:
+				this.branch.setStatus(1);
+				break;
+			case 1:
+				if (this.branch.getStatus() == 3) {
+					this.branch.setStatus(2);
+				}
+				break;
+			case 3:
+				if (this.branch.getStatus() != 3) {
+					this.branch.setStatus(2);
+				}
+				if (append) {
+					this.branch.param.addAll(branch.getParam());
+				} else {
+					this.branch.param = branch.getParam();
+				}
 			}
 			return this.branch;
 		}
@@ -121,6 +122,7 @@ public class AppendForest<T> implements Comparable<AppendForest<T>>, WoodInterfa
 	 * @param c
 	 * @return
 	 */
+	@Override
 	public boolean contains(char c) {
 		if (this.branches == null) {
 			return false;
@@ -128,6 +130,7 @@ public class AppendForest<T> implements Comparable<AppendForest<T>>, WoodInterfa
 		return Arrays.binarySearch(this.branches, c) > -1;
 	}
 
+	@Override
 	public int compareTo(char c) {
 		if (this.c > c)
 			return 1;
@@ -137,6 +140,7 @@ public class AppendForest<T> implements Comparable<AppendForest<T>>, WoodInterfa
 		return 0;
 	}
 
+	@Override
 	public boolean equals(char c) {
 		return this.c == c;
 	}
@@ -146,14 +150,17 @@ public class AppendForest<T> implements Comparable<AppendForest<T>>, WoodInterfa
 		return this.c;
 	}
 
+	@Override
 	public byte getStatus() {
 		return this.status;
 	}
 
+	@Override
 	public void setStatus(int status) {
 		this.status = (byte) status;
 	}
 
+	@Override
 	public char getC() {
 		return this.c;
 	}
@@ -206,6 +213,7 @@ public class AppendForest<T> implements Comparable<AppendForest<T>>, WoodInterfa
 		}
 	}
 
+	@Override
 	public int compareTo(AppendForest<T> o) {
 		// TODO Auto-generated method stub
 		if (this.c > o.c)
@@ -251,6 +259,5 @@ public class AppendForest<T> implements Comparable<AppendForest<T>>, WoodInterfa
 		// TODO Auto-generated method stub
 		return this.branches[this.search(paramChar)];
 	}
-
 
 }

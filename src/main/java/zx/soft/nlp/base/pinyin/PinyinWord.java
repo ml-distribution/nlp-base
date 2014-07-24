@@ -1,6 +1,7 @@
 package zx.soft.nlp.base.pinyin;
 
 public class PinyinWord {
+
 	public String py;
 	public int tone;
 
@@ -18,6 +19,7 @@ public class PinyinWord {
 		this.py = String.valueOf(c);
 	}
 
+	@Override
 	public String toString() {
 		if (tone > 0)
 			return this.py + tone;
@@ -27,6 +29,6 @@ public class PinyinWord {
 
 	public static void main(String[] args) {
 		System.out.println(new PinyinWord("bei3"));
-		;
 	}
+
 }

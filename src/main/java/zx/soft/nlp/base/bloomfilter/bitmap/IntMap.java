@@ -1,23 +1,15 @@
 package zx.soft.nlp.base.bloomfilter.bitmap;
 
-
 import zx.soft.nlp.base.bloomfilter.iface.BitMap;
 
 /**
  * 
-* @��Ŀ��ƣ�Test   
-* @����ƣ�LongMap   
-* @��������   ������BitMap��32λ������.������ܷ����õ�Ч��.һ������½���ʹ�ô���
-* @�����ˣ�Ansj   
-* @����ʱ�䣺2011-9-8 ����03:17:20  
-* @�޸ı�ע��   
-* @version    
-*
+ * @author wanggang
+ *
  */
 public class IntMap implements BitMap {
 
 	private static final int MAX = Integer.MAX_VALUE;
-
 
 	public IntMap() {
 		ints = new int[93750000];
@@ -29,25 +21,28 @@ public class IntMap implements BitMap {
 
 	private int[] ints = null;
 
+	@Override
 	public void add(long i) {
 		int r = (int) (i / 32);
 		int c = (int) (i % 32);
-		ints[r] = (int) (ints[r] | (1 << c));
+		ints[r] = ints[r] | (1 << c);
 	}
 
+	@Override
 	public boolean contains(long i) {
 		int r = (int) (i / 32);
 		int c = (int) (i % 32);
-		if (((int) ((ints[r] >>> c)) & 1) == 1) {
+		if ((((ints[r] >>> c)) & 1) == 1) {
 			return true;
 		}
 		return false;
 	}
 
+	@Override
 	public void remove(long i) {
 		int r = (int) (i / 32);
 		int c = (int) (i % 32);
-		ints[r] = (int) (ints[r] & (((1 << (c + 1)) - 1) ^ MAX));
+		ints[r] = ints[r] & (((1 << (c + 1)) - 1) ^ MAX);
 	}
 
 }

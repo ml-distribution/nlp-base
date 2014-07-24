@@ -14,8 +14,8 @@ import zx.soft.nlp.base.util.StringUtil;
 /**
  * 双数组使用
  * 
- * @author ansj
- * 
+ * @author wanggang
+ *
  */
 public class DoubleArrayTire {
 
@@ -26,7 +26,8 @@ public class DoubleArrayTire {
 	private DoubleArrayTire() {
 	}
 
-	public static DoubleArrayTire load(String filePath) throws FileNotFoundException, IOException, ClassNotFoundException {
+	public static DoubleArrayTire load(String filePath) throws FileNotFoundException, IOException,
+			ClassNotFoundException {
 		DoubleArrayTire obj = new DoubleArrayTire();
 		ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filePath)));
 		try {
@@ -53,7 +54,8 @@ public class DoubleArrayTire {
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
 	 */
-	public static DoubleArrayTire loadText(String filePath, Class<? extends Item> cla) throws InstantiationException, IllegalAccessException {
+	public static DoubleArrayTire loadText(String filePath, Class<? extends Item> cla) throws InstantiationException,
+			IllegalAccessException {
 		return loadText(IOUtil.getInputStream(filePath), cla);
 	}
 
@@ -65,7 +67,8 @@ public class DoubleArrayTire {
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
 	 */
-	public static DoubleArrayTire loadText(InputStream is, Class<? extends Item> cla) throws InstantiationException, IllegalAccessException {
+	public static DoubleArrayTire loadText(InputStream is, Class<? extends Item> cla) throws InstantiationException,
+			IllegalAccessException {
 		DoubleArrayTire obj = new DoubleArrayTire();
 		FileIterator it = IOUtil.instanceFileIterator(is, IOUtil.UTF8);
 		String temp = it.next();
@@ -109,11 +112,11 @@ public class DoubleArrayTire {
 	 * @return
 	 */
 	public int getId(String str) {
-		Item item = getItem(str) ;
-		if(item==null){
-			return 0 ;
-		}else{
-			return item.index ;
+		Item item = getItem(str);
+		if (item == null) {
+			return 0;
+		} else {
+			return item.index;
 		}
 	}
 
@@ -134,14 +137,14 @@ public class DoubleArrayTire {
 
 		int checkValue = 0;
 		Item item = dat[str.charAt(0)];
-		if(item==null){
-			return null ;
+		if (item == null) {
+			return null;
 		}
 		for (int i = 1; i < str.length(); i++) {
 			checkValue = item.index;
 			if (item.base + str.charAt(i) > dat.length - 1)
 				return null;
-			
+
 			item = dat[item.base + str.charAt(i)];
 			if (item == null) {
 				return null;

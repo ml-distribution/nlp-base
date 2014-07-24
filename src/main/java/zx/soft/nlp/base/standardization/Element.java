@@ -1,6 +1,5 @@
 package zx.soft.nlp.base.standardization;
 
-
 public class Element {
 
 	public char name;
@@ -10,15 +9,13 @@ public class Element {
 		this.name = name;
 	}
 
-
 	public void len() {
 		len++;
 	}
 
 	@Override
 	public String toString() {
-		return String.valueOf(name) ;
+		return String.valueOf(name);
 	}
-
 
 }

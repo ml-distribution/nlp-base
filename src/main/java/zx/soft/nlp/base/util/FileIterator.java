@@ -10,9 +10,11 @@ import java.util.Iterator;
 /**
  * 文件迭代器
  * 
- * @author ansj
+ * @author wanggang
+ *
  */
 public class FileIterator implements Iterator<String> {
+
 	String temp = null;
 	private BufferedReader br = null;
 
@@ -20,7 +22,8 @@ public class FileIterator implements Iterator<String> {
 		br = IOUtil.getReader(path, charEncoding);
 	}
 
-	protected FileIterator(InputStream is, String charEncoding) throws UnsupportedEncodingException, FileNotFoundException {
+	protected FileIterator(InputStream is, String charEncoding) throws UnsupportedEncodingException,
+			FileNotFoundException {
 		br = IOUtil.getReader(is, charEncoding);
 	}
 
@@ -30,7 +33,6 @@ public class FileIterator implements Iterator<String> {
 			try {
 				temp = br.readLine();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (temp == null) {
@@ -50,7 +52,6 @@ public class FileIterator implements Iterator<String> {
 			}
 			return temp;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		} finally {
@@ -63,7 +64,6 @@ public class FileIterator implements Iterator<String> {
 			try {
 				br.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	}
@@ -77,4 +77,5 @@ public class FileIterator implements Iterator<String> {
 	public void remove() {
 		throw new RuntimeException("file iteartor can not remove ");
 	}
+
 }

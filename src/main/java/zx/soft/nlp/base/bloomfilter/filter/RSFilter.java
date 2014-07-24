@@ -1,6 +1,5 @@
 package zx.soft.nlp.base.bloomfilter.filter;
 
-
 import zx.soft.nlp.base.bloomfilter.iface.Filter;
 
 public class RSFilter extends Filter {

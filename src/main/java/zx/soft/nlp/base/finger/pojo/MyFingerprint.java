@@ -48,4 +48,5 @@ public class MyFingerprint implements Comparable<MyFingerprint> {
 	public static void main(String[] args) {
 		System.out.println("aaa".length() == "aaa".getBytes().length);
 	}
+
 }

@@ -1,6 +1,5 @@
 package zx.soft.nlp.base.bloomfilter.filter;
 
-
 import zx.soft.nlp.base.bloomfilter.iface.Filter;
 
 public class JSFilter extends Filter {
@@ -20,9 +19,10 @@ public class JSFilter extends Filter {
 		for (int i = 0; i < str.length(); i++) {
 			hash ^= ((hash << 5) + str.charAt(i) + (hash >> 2));
 		}
-		
-		if(hash<0) hash*=-1 ;
-		
+
+		if (hash < 0)
+			hash *= -1;
+
 		return hash % size;
 	}
 

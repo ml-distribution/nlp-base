@@ -1,14 +1,27 @@
 package zx.soft.nlp.base.occurrence;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import zx.soft.nlp.base.util.CollectionUtil;
 import zx.soft.nlp.base.util.MapCount;
 
-import java.io.*;
-import java.util.*;
-import java.util.Map.Entry;
-
 /**
- * 词语共现计算工具,愚人节快乐 Created by ansj on 4/1/14.
+ * 词语共现计算工具
+ * 
+ * @author wanggang
+ *
  */
 public class Occurrence implements Serializable {
 
@@ -16,11 +29,11 @@ public class Occurrence implements Serializable {
 
 	private int seqId = 0;
 
-	private Map<String, Count> word2Mc = new HashMap<String, Count>();
+	private final Map<String, Count> word2Mc = new HashMap<String, Count>();
 
-	private Map<Integer, String> idWordMap = new HashMap<Integer, String>();
+	private final Map<Integer, String> idWordMap = new HashMap<Integer, String>();
 
-	private MapCount<String> ww2Mc = new MapCount<String>();
+	private final MapCount<String> ww2Mc = new MapCount<String>();
 
 	private static final String CONN = "\u0000";
 
@@ -101,20 +114,20 @@ public class Occurrence implements Serializable {
 		String word2 = null;
 		for (Integer id : count.relationSet) {
 			word2 = idWordMap.get(id);
-			map.put(word2, distance(word, word2)*word2Mc.get(word2).score);
+			map.put(word2, distance(word, word2) * word2Mc.get(word2).score);
 		}
 		return CollectionUtil.sortMapByValue(map, 1);
 	}
-	
+
 	/**
 	 * tf/idf 计算分数
 	 */
-	public void computeTFIDF(){
-		int size = word2Mc.size() ;
-		Count count = null ;
+	public void computeTFIDF() {
+		int size = word2Mc.size();
+		Count count = null;
 		for (Entry<String, Count> element : word2Mc.entrySet()) {
-			count = element.getValue() ;
-			count.score = Math.log((size+count.score)/count.score) ;
+			count = element.getValue();
+			count.score = Math.log((size + count.score) / count.score);
 		}
 	}
 

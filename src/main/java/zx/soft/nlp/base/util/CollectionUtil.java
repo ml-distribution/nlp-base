@@ -1,8 +1,13 @@
 package zx.soft.nlp.base.util;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
 public class CollectionUtil {
+
 	/**
 	 * map 按照value排序
 	 *
@@ -19,6 +24,5 @@ public class CollectionUtil {
 		});
 		return orderList;
 	}
-
 
 }

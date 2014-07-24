@@ -8,6 +8,7 @@ public class StringUtil {
 	private static final char DH = ',';
 	private static int[] filter = new int[128];
 	private static int[] filterEnd = new int[128];
+
 	static {
 		filter['<'] = Integer.MAX_VALUE / 2;
 		filterEnd['<'] = '>';
@@ -25,7 +26,6 @@ public class StringUtil {
 		filter['-'] = 1;
 		filter['.'] = 1;
 		filter['#'] = 1;
-
 	}
 
 	/**
@@ -51,40 +51,40 @@ public class StringUtil {
 			}
 
 			switch (filter[c]) {
-				case -1:
-					break;
-				case 0:
+			case -1:
+				break;
+			case 0:
+				sb.append(c);
+				break;
+			case 1:
+				if (sb.length() > 0 && sb.charAt(sb.length() - 1) != c)
 					sb.append(c);
-					break;
-				case 1:
-					if (sb.length() > 0 && sb.charAt(sb.length() - 1) != c)
-						sb.append(c);
-					do {
-						i++;
-					} while (i < length && input.charAt(i) == c);
+				do {
+					i++;
+				} while (i < length && input.charAt(i) == c);
 
-					if (i < length || input.charAt(length - 1) != c)
-						i--;
-					break;
-				default:
-					tl = filter[c] + i;
-					int tempOff = i;
-					boolean flag = false;
-					char end = (char) filterEnd[c];
-					for (i++; i < length && i < tl; i++) {
-						c = input.charAt(i);
-						if (c > 127)
-							continue;
-						if (c == end) {
-							flag = true;
-							break;
-						}
+				if (i < length || input.charAt(length - 1) != c)
+					i--;
+				break;
+			default:
+				tl = filter[c] + i;
+				int tempOff = i;
+				boolean flag = false;
+				char end = (char) filterEnd[c];
+				for (i++; i < length && i < tl; i++) {
+					c = input.charAt(i);
+					if (c > 127)
+						continue;
+					if (c == end) {
+						flag = true;
+						break;
 					}
-					if (!flag) {
-						i = tempOff;
-						sb.append(input.charAt(i));
-					}
-					break;
+				}
+				if (!flag) {
+					i = tempOff;
+					sb.append(input.charAt(i));
+				}
+				break;
 			}
 		}
 		return sb.toString();
@@ -163,4 +163,5 @@ public class StringUtil {
 		}
 		return true;
 	}
+
 }

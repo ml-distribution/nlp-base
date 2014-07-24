@@ -1,10 +1,8 @@
 package zx.soft.nlp.base.bloomfilter.filter;
 
-
 import zx.soft.nlp.base.bloomfilter.iface.Filter;
 
 public class FNVFilter extends Filter {
-
 
 	private static final int p = 16777619;
 

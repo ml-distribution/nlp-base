@@ -1,10 +1,8 @@
 package zx.soft.nlp.base.bloomfilter.filter;
 
-
 import zx.soft.nlp.base.bloomfilter.iface.Filter;
 
 public class ELFFilter extends Filter {
-
 
 	protected ELFFilter(long maxValue, MACHINENUM X) throws Exception {
 		super(maxValue, X);
@@ -15,8 +13,8 @@ public class ELFFilter extends Filter {
 		// TODO Auto-generated method stub
 		long hash = 0;
 		long g = 0;
-		
-		int length = str.length() ;
+
+		int length = str.length();
 		for (int i = 0; i < length; i++) {
 			hash = (hash << 4) + str.charAt(i);
 			g = hash & 0xF0000000;

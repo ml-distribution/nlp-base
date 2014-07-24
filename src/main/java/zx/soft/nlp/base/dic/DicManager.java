@@ -1,16 +1,22 @@
 package zx.soft.nlp.base.dic;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+
 import zx.soft.nlp.base.tire.domain.Forest;
 import zx.soft.nlp.base.tire.domain.SmartForest;
 import zx.soft.nlp.base.tire.domain.Value;
 import zx.soft.nlp.base.tire.library.Library;
 import zx.soft.nlp.base.util.IOUtil;
 
-import java.io.*;
-import java.util.HashMap;
-
 /**
- * Created by ansj on 4/1/14.
+ * 
+ * @author wanggang
+ *
  */
 public class DicManager {
 
@@ -24,8 +30,6 @@ public class DicManager {
 	private static Forest j2fForest = null;
 
 	private static SmartForest<String[]> pinyinForest = null;
-	
-	
 
 	private static SmartForest<String[]> initPinyin() {
 		BufferedReader reader = null;
@@ -171,21 +175,21 @@ public class DicManager {
 	 * @return
 	 */
 	public static Forest getJ2fForest() {
-		if(j2fForest==null){
-			j2fForest = initRev(null, DicManager.class.getResourceAsStream("/fan2jian.dic")) ;
+		if (j2fForest == null) {
+			j2fForest = initRev(null, DicManager.class.getResourceAsStream("/fan2jian.dic"));
 		}
 		return j2fForest;
 	}
-	
+
 	/**
 	 * 得到拼音词典
 	 * @return
 	 */
-	public static SmartForest<String[]> getPinyinForest(){
-		if(pinyinForest==null){
-			pinyinForest = initPinyin() ;
+	public static SmartForest<String[]> getPinyinForest() {
+		if (pinyinForest == null) {
+			pinyinForest = initPinyin();
 		}
-		return pinyinForest ;
+		return pinyinForest;
 	}
 
 }

@@ -1,12 +1,12 @@
 package zx.soft.nlp.base.util;
 
-import zx.soft.nlp.base.tire.domain.WoodInterface;
-
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+import zx.soft.nlp.base.tire.domain.WoodInterface;
 
 public class AnsjArrays {
+
 	private static final int INSERTIONSORT_THRESHOLD = 7;
 
 	/**
@@ -38,7 +38,7 @@ public class AnsjArrays {
 
 	public static void main(String[] args) {
 
-		int[] chars = {1, 2, 3, 4, 5, 6, 8, 7};
+		int[] chars = { 1, 2, 3, 4, 5, 6, 8, 7 };
 		chars = Arrays.copyOf(chars, 100);
 		System.out.println(chars.length);
 		for (int i = 0; i < chars.length; i++) {
@@ -121,8 +121,10 @@ public class AnsjArrays {
 		if (newLength < 0)
 			throw new IllegalArgumentException(from + " > " + to);
 		@SuppressWarnings("unchecked")
-		T[] copy = ((Object) newType == (Object) Object[].class) ? (T[]) new Object[newLength] : (T[]) Array.newInstance(newType.getComponentType(), newLength);
+		T[] copy = ((Object) newType == (Object) Object[].class) ? (T[]) new Object[newLength] : (T[]) Array
+				.newInstance(newType.getComponentType(), newLength);
 		System.arraycopy(original, from, copy, 0, Math.min(original.length - from, newLength));
 		return copy;
 	}
+
 }

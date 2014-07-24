@@ -5,12 +5,12 @@ import java.io.Serializable;
 /**
  * 如果你的dat需要.有参数需要继承并且重写这个类的构造方法
  * 
- * @author ansj
- * 
+ * @author wanggang
+ *
  */
 public abstract class Item implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	public int index;
 	public String name;
 	public int base = 65536;

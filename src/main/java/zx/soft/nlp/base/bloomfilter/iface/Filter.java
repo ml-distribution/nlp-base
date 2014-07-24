@@ -9,12 +9,9 @@ public abstract class Filter {
 		X86, X64
 	}
 
-	;
-
 	protected BitMap bm = null;
 
 	protected long size = 0;
-
 
 	public Filter(long maxValue, MACHINENUM X) throws Exception {
 		this.size = maxValue;
@@ -26,7 +23,6 @@ public abstract class Filter {
 			throw new Exception("unknow math num!");
 		}
 	}
-
 
 	public Filter(long maxValue) throws Exception {
 		this.size = maxValue;
@@ -51,7 +47,6 @@ public abstract class Filter {
 		long hash = this.myHashCode(str);
 		bm.add(hash);
 	}
-
 
 	/**
 	 * @创建人：Ansj -创建时间：2011-9-8 下午03:21:51
